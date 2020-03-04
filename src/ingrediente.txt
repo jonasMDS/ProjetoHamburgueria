@@ -1,4 +1,3 @@
-5
 1,Alface,0.40
 2,Bacon,2.00
 3,Hambúrguer de carne,3.00

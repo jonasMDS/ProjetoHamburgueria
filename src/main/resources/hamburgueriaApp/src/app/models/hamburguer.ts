@@ -1,8 +1,9 @@
 import {Ingrediente} from "./ingrediente";
 
 export interface Hamburguer {
-  id_hamburguer: number;
+  idHamburguer: number;
   nome: String;
   ingredientes : Array<Ingrediente>;
+  preco: number;
 
 }

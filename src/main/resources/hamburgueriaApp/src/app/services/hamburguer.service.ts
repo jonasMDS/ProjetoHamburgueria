@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Hamburguer } from '../models/hamburguer';
+import {Ingrediente} from "../models/ingrediente";
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,8 @@ export class HamburguerService {
   }
 
   // devolve o preco
-  calcularPrecoHamburguer(h: Hamburguer): Observable<number> {
-    return this.httpClient.post<number>(this.url, JSON.stringify(h), this.httpOptions)
+  calcularPrecoHamburguer(ings: Ingrediente[]): Observable<number> {
+    return this.httpClient.post<number>(this.url + '/hamburguer/calcular', JSON.stringify(ings), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -42,7 +43,7 @@ export class HamburguerService {
     if (error.error instanceof ErrorEvent) {
       errorMessage = error.error.message;
     } else {
-      errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
+      errorMessage = `Código do erro: ${error.status}, ` + `mensagem: ${error.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);

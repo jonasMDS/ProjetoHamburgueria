@@ -1,5 +1,5 @@
 export interface Ingrediente {
-  id_ingrediente : number;
+  idIngrediente : number;
   nome : String;
   preco : number;
   quantidade : number;

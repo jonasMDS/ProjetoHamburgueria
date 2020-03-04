@@ -1,10 +1,107 @@
 <div class="topbar">
 <div class="fundo-animado">
+  <div *ngIf="telaAtual == 0">
+    <img class="banner" src="assets/hambugueria-logo.png">
 
-  <img class="banner" src="assets/hambugueria-logo.png">
-  <a class="btn btn-success adicionar-burger animated pulse infinite"> <i class="fa fa-plus"></i></a>
+    <a class="btn btn-success adicionar-burger animated pulse infinite" (click)="novoPedido()"> <i class="fa fa-plus"></i></a>
+  </div>
 
-  <div>
+
+  <div *ngIf="telaAtual == 1">
+    <div class="card animated fadeIn" style="width: 18rem;">
+      <img class="card-img-top img-burguer" src="assets/imagem-burguer.jpg" alt="Card image cap">
+      <div class="card-body text-center">
+        <br>
+        <h5 class="card-title">Cardápio de Hambúrgueres</h5>
+        <p class="card-text">Selecione abaixo o item desejado para mais detalhes</p>
+        <br>
+        <div class='panel-body'>
+          <div class='table-responsive'>
+            <table class='table'>
+              <thead>
+                <tr>
+                  <th class="text-center">Nome </th>
+                  <th class="text-center">Ingredientes</th>
+                  <th class="text-center">Preço</th>
+                  <th class="text-center"></th>
+                </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let burguer of hamburgueres; let i = index" >
+                <td class="font-bold">{{burguer.nome }}</td>
+                <td class="font-12"> Pão, <label *ngFor="let ingrediente of burguer.ingredientes"> {{ingrediente.nome}}, </label></td>
+                <td>R$ {{burguer.preco | number : '1.2-2'}}</td>
+                <td> <a class="btn btn-primary font-12 font-bold" (click)="selecionarHamburguer(i)" >Selecionar</a></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="text-left">
+            <a class="btn btn-danger" (click)="telaAtual=telaAtual-1">Voltar</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+    <div *ngIf="telaAtual == 2">
+      <div class="card animated fadeIn" style="width: 18rem;">
+        <img class="card-img-top img-burguer" src="assets/imagem-burguer.jpg" alt="Card image cap">
+        <div class="card-body text-center">
+          <br>
+          <h5 class="card-title">Selecionado: {{h.nome}}</h5>
+          <p class="card-text">Ingredientes: Pão,  <label *ngFor="let ingrediente of h.ingredientes"> {{ingrediente.nome}}, </label></p>
+          <p class="card-text">Deseja adicionar mais algum ingrediente?</p>
+          <div class='panel-body'>
+            <div class='table-responsive'>
+              <table class='table font-12'>
+                <thead>
+                <tr>
+                  <th class="text-center">Nome </th>
+                  <th class="text-center">Custo Adicional</th>
+                  <th class="text-center"> Ação </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let ingrediente of ingredientes;">
+                  <td >{{ingrediente.nome }}</td>
+                  <td >R$ {{ingrediente.preco | number : '1.2-2' }}</td>
+                  <td> <a class="btn btn-danger font-bold btn-mini"  (click)="ingrediente.quantidade = ingrediente.quantidade - 1">-</a>&nbsp; {{ingrediente.quantidade}} &nbsp;
+                    <a class="btn btn-success font-bold btn-mini"  (click)="ingrediente.quantidade = ingrediente.quantidade + 1">+</a></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="text-left">
+              <a class="btn btn-danger" (click)="telaAtual=telaAtual-1">Voltar</a>
+            </div>
+
+
+            <div class="text-right">
+              <a class="btn btn-success" (click)="calcularPrecoHamburguer()"> Confirmar </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  <div *ngIf="telaAtual == 3">
+    <div class="card animated fadeIn" style="width: 18rem;">
+      <img class="card-img-top img-burguer" src="assets/imagem-burguer.jpg" alt="Card image cap">
+      <div class="card-body text-center">
+        <br>
+        <h5 class="card-title">Selecionado: {{h.nome}}</h5>
+        <br>
+        <p> O Total foi: R$ {{precoFinal | number : '1.2-2'}}</p>
+      </div>
+    </div>
+    <div class="text-left">
+      <a class="btn btn-danger" (click)="telaAtual=0">Voltar</a>
+    </div>
+  </div>
+    <div>
+
     <ul class="item-animado">
       <li></li>
       <li></li>
