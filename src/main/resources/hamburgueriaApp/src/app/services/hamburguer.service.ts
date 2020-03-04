@@ -5,6 +5,7 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Hamburguer } from '../models/hamburguer';
 import {Ingrediente} from "../models/ingrediente";
+import {Promocao} from "../models/promocao";
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class HamburguerService {
   }
 
   // devolve o preco
-  calcularPrecoHamburguer(ings: Ingrediente[]): Observable<number> {
-    return this.httpClient.post<number>(this.url + '/hamburguer/calcular', JSON.stringify(ings), this.httpOptions)
+  calcularPrecoHamburguer(ings: Ingrediente[]): Observable<Promocao> {
+    return this.httpClient.post<Promocao>(this.url + '/hamburguer/calcular', JSON.stringify(ings), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)

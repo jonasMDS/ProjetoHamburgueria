@@ -63,30 +63,13 @@ public class Hamburguer {
         return preco_final;
     }
 
-    public double calcularPrecoPromocao(){
+    public Promocao calcularPrecoPromocao(){
 
         double preco_final = 0;
 
         Promocao p = new Promocao(this.ingredientes);
-        for (Ingrediente ingrediente : this.ingredientes) {
-            switch (ingrediente.getIdIngrediente()){
 
-                case 1:         // Alface
-                case 2:         // Bacon
-                case 4:         // Ovo
-                    preco_final += ingrediente.getPreco() * ingrediente.getQuantidade();
-                    break;
-                case 3:
-                    int descontoC = p.descontoCarne();
-                    preco_final += ingrediente.getPreco() * (ingrediente.getQuantidade() - descontoC);
-                    break;
-                case 5:
-                    int descontoQ = p.descontoQueijo();
-                    preco_final += ingrediente.getPreco() * (ingrediente.getQuantidade() - descontoQ);
-                    break;
-            }
-        }
-        return p.descontoLight()? (preco_final*0.9):preco_final;
+        return p.calcularPromocao();
     }
 
     private static int[] strToIntArray(String[] vetor){

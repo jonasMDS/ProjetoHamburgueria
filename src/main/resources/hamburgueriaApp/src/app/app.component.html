@@ -72,16 +72,14 @@
                 </tbody>
               </table>
             </div>
-            <div class="text-left">
-              <a class="btn btn-danger" (click)="telaAtual=telaAtual-1">Voltar</a>
-            </div>
 
 
-            <div class="text-right">
-              <a class="btn btn-success" (click)="calcularPrecoHamburguer()"> Confirmar </a>
-            </div>
           </div>
+          <div class="text-right">
+            <a class="btn btn-danger" (click)="telaAtual=telaAtual-1">Voltar</a>
 
+            <a class="btn btn-success" (click)="calcularPrecoHamburguer()"> Confirmar </a>
+          </div>
         </div>
       </div>
     </div>
@@ -93,11 +91,17 @@
         <br>
         <h5 class="card-title">Selecionado: {{h.nome}}</h5>
         <br>
-        <p> O Total foi: R$ {{precoFinal | number : '1.2-2'}}</p>
+        <p> O Total foi: R$ {{promocaoAtual.precoFinal | number : '1.2-2'}}</p>
+        <br>
+        <label *ngIf="promocaoAtual.light"> Promo Light Ativada: 10% de Desconto por ter alface e não ter Bacon</label>
+        <label *ngIf="promocaoAtual.muitaCarne > 1"> Promo MuitaCarne: {{promocaoAtual.muitaCarne}} hambúrgueres descontados do pedido</label>
+        <label *ngIf="promocaoAtual.muitoQueijo > 1"> Promo MuitoQueijo:  {{promocaoAtual.muitoQueijo}} fatias de Queijo descontadas do pedido</label>
+
       </div>
-    </div>
-    <div class="text-left">
-      <a class="btn btn-danger" (click)="telaAtual=0">Voltar</a>
+
+      <div class="text-left">
+        <a class="btn btn-danger" (click)="telaAtual=0">Voltar</a>
+      </div>
     </div>
   </div>
     <div>

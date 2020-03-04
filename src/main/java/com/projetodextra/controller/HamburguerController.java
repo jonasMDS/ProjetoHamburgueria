@@ -2,6 +2,7 @@ package com.projetodextra.controller;
 
 import com.projetodextra.model.Hamburguer;
 import com.projetodextra.model.Ingrediente;
+import com.projetodextra.model.Promocao;
 import com.projetodextra.repository.HamburguerRepository;
 import com.projetodextra.repository.IngredienteRepository;
 import com.projetodextra.utils.DadosEstaticos;
@@ -32,7 +33,7 @@ public class HamburguerController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/hamburguer/calcular", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public double calcularPreco(@RequestBody List<Ingrediente> ingredientes) {
+    public Promocao calcularPreco(@RequestBody List<Ingrediente> ingredientes) {
         Hamburguer h = new Hamburguer(ingredientes);
         return h.calcularPrecoPromocao();
     }

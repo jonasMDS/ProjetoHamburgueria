@@ -81,6 +81,25 @@ public class LeitorDados {
         return this.hamburgueres;
     }
 
+    public Hamburguer getHamburger(int id) {
+        for (Hamburguer h : this.hamburgueres) {
+            if (h.getIdHamburguer() == id){
+                return h;
+            }
+        }
+        return null;
+    };
+
+
+    public Ingrediente getIngrediente(int id) {
+        for (Ingrediente i : this.ingredientes) {
+            if (i.getIdIngrediente() == id){
+                return i;
+            }
+        }
+        return null;
+    };
+
     public List<Ingrediente> getIngredients() {
         return this.ingredientes;
     }

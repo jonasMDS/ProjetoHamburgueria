@@ -3,6 +3,7 @@ import {Hamburguer} from "./models/hamburguer";
 import {HamburguerService} from "./services/hamburguer.service";
 import {IngredienteService} from "./services/ingrediente.service";
 import {Ingrediente} from "./models/ingrediente";
+import {Promocao} from "./models/promocao";
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit {
   hamburgueres: Hamburguer[];
   ingredientes: Ingrediente[];
   telaAtual: number;
+  promocaoAtual = {} as Promocao;
 
   constructor(private hamburguerService: HamburguerService, private ingredienteService: IngredienteService) {}
 
@@ -44,17 +46,14 @@ export class AppComponent implements OnInit {
   }
 
   calcularPrecoHamburguer(){
-    this.hamburguerService.calcularPrecoHamburguer(this.ingredientes).subscribe(valor => {
-      this.precoFinal = valor;
+    this.hamburguerService.calcularPrecoHamburguer(this.ingredientes).subscribe((promo) => {
+      this.promocaoAtual = promo;
+      this.telaAtual = 3;
     });
   }
 
   novoPedido(){
     this.telaAtual = 1;
-  }
-
-  identificador(index, item){
-    return index;
   }
 
   selecionarHamburguer(i: number){
