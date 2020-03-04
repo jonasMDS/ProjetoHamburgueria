@@ -1,0 +1,181 @@
+.topbar {
+  background-color: #c86f5e;
+  height: 45vh;
+  box-shadow: 0px 0px 3px black;
+}
+
+.banner {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vh;
+
+}
+.fundo-animado {
+  width: 100%;
+  height: 100% !important;
+  z-index: 0;
+}
+
+.caixa-criacao {
+  background-color: #ffffff;
+  position: absolute;
+  border-radius: 50px;
+  box-shadow: all;
+  height: 70vh;
+  width: 70vh;
+  top: 10%;
+  left: 10%;
+  z-index: 100;
+}
+
+.titulo-site {
+  font-family: "MV Boli", serif;
+  position: absolute;
+  display: block;
+  width: 100%;
+  text-align: center;
+  align-content: center;
+  top: 15%;
+  z-index: 50;
+}
+
+.adicionar-burger {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 100px;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  z-index: 50;
+  top: 45%;
+  left: 45%;
+  font-size: 100px;
+}
+
+.item-animado {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -100;
+}
+.item-animado li {
+  position: absolute;
+  display: block;
+  list-style: none;
+  height: 35px;
+  width: 35px;
+  background-color:  #c86f5e;
+  animation: animate 20s linear infinite;
+  bottom: -150px;
+}
+
+.item-animado li:nth-child(1) {
+  left: 5%;
+  height: 40px;
+  width: 40px;
+  animation-delay: 1s;
+  animation-duration: 11s;
+}
+.item-animado li:nth-child(2) {
+  left: 15%;
+  height: 150px;
+  width: 150px;
+  animation-delay: 2s;
+  animation-duration: 9s;
+}
+.item-animado li:nth-child(3) {
+  left: 25%;
+  height: 70px;
+  width: 70px;
+  animation-delay: 3s;
+  animation-duration: 12s;
+}
+.item-animado li:nth-child(4) {
+  left: 35%;
+  height: 14px;
+  width: 14px;
+  animation-delay: 2s;
+  animation-duration: 8s;
+}
+.item-animado li:nth-child(5) {
+  left: 45%;
+  height: 120px;
+  width: 120px;
+  animation-delay: 6s;
+  animation-duration: 11s;
+}
+.item-animado li:nth-child(6) {
+  left: 55%;
+  height: 30px;
+  width: 30px;
+  animation-delay: 5s;
+  animation-duration: 12s;
+}
+.item-animado li:nth-child(7) {
+  left: 65%;
+  height: 90px;
+  width: 90px;
+  animation-delay: 3s;
+  animation-duration: 11s;
+}
+
+.item-animado li:nth-child(8) {
+  left: 75%;
+  height: 20px;
+  width: 20px;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+.item-animado li:nth-child(9) {
+  left: 85%;
+  height: 40px;
+  width: 40px;
+  animation-delay: 3s;
+  animation-duration: 10s;
+}
+.item-animado li:nth-child(10) {
+  left: 95%;
+  height: 80px;
+  width: 80px;
+  animation-delay: 4s;
+  animation-duration: 7s;
+}
+.item-animado li:nth-child(11) {
+  left: 27%;
+  height: 70px;
+  width: 70px;
+  animation-delay: 2s;
+  animation-duration: 8s;
+}
+
+
+@keyframes animate{
+  0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.5;
+  }
+  25%{
+    transform: translateY(-320px) rotate(360deg);
+    opacity: 0.4;
+  }
+  50%{
+    transform: translateY(-640px) rotate(720deg);
+    opacity: 0.2;
+  }
+  75%{
+    transform: translateY(-1000px) rotate(1440deg);
+    opacity: 0.1;
+  }
+
+  100%{
+    transform: translateY(-1280px) rotate(2800deg);
+    opacity: 0;
+  }
+
+
+}
